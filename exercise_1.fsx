@@ -30,10 +30,19 @@ let rec zip lst1 lst2 =
 // val ordered : lst:'a list -> bool when 'a : comparison
 let ordered lst = 
     List.sort lst |> zip lst |> List.fold (fun isOrdered x -> fst x <= snd x && isOrdered) true
+// Variante 2
+// val ordered2 : lst:'a list -> bool when 'a : comparison
+let ordered2 lst =
+    match lst with
+    | [] -> true
+    | _ -> zip lst.[..lst.Length-1] lst.[1..] |> List.fold (fun isOrdered x -> fst x <= snd x && isOrdered) true
 
 // Test gemäss Aufgabenstellung
 // val it : bool * bool * bool = (true, false, true)
 ordered [1;10;13;21], ordered [2;10;1], ordered []
+// Test Variante 2
+// val it : bool * bool * bool = (true, false, true)
+ordered2 [1;10;13;21], ordered2 [2;10;1], ordered2 []
 
 
 
