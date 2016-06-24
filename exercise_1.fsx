@@ -29,7 +29,7 @@ let rec zip lst1 lst2 =
 // Implementierte Funktion `ordered`
 // val ordered : lst:'a list -> bool when 'a : comparison
 let ordered lst = 
-    List.sort lst |> zip lst |> List.fold (fun isOrdered x -> fst x <= snd x && isOrdered) true
+    List.sort lst |> zip lst |> List.fold (fun isOrdered x -> fst x = snd x && isOrdered) true
 // Variante 2
 // val ordered2 : lst:'a list -> bool when 'a : comparison
 let ordered2 lst =
